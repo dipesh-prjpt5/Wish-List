@@ -8,8 +8,6 @@ const AuthPageLayout = ({ children }: { children: React.ReactNode }) => {
 
             {/* Right section - Image */}
             <div className="w-1/2 relative">
-
-
                 <img
                     src="/authBanner.jpg"
                     alt="Auth Visual"

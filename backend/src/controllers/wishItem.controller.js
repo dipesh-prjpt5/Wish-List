@@ -5,14 +5,14 @@ export const addItemInWishList = async (req, res) => {
         const { name, description, price, url } = req.body;
         if (!name) {
             return res.status(400).json({
-                sucess: false,
+                success: false,
                 message: "All fields are required."
             })
         }
-        const existingItem = User.findOne(name);
+        const existingItem = await User.findOne(name);
         if (existingItem) {
             return res.status(409).json({
-                sucess: false,
+                success: false,
                 message: "Item Already exists."
             })
         }
@@ -20,13 +20,13 @@ export const addItemInWishList = async (req, res) => {
             name, description, price, url
         })
         return res.status(201).json({
-            sucess: true,
+            success: true,
             message: "Item Added successfully.",
             newItem
         })
     } catch (err) {
         return res.status(500).json({
-            sucess: false,
+            success: false,
             message: "Internal Server error.",
             error: err.message
         })
@@ -38,13 +38,13 @@ export const removeItemInWishList = async (req, res) => {
         const { itemId } = req.params;
         const item = WishItem.findByIdAndDelete(itemId);
         res.status(201).json({
-            sucess: true,
+            success: true,
             message: "Item Deleted successfully.",
             item
         })
     } catch (err) {
         return res.status(500).json({
-            sucess: false,
+            success: false,
             message: "Internal Server error.",
             error: err.message
         })

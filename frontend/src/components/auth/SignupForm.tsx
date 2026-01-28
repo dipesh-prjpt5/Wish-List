@@ -5,6 +5,7 @@ import {
   FieldLabel,
 } from "@/components/ui/field"
 import { Input } from "@/components/ui/input"
+import { Link } from "react-router-dom"
 
 export function SignupForm() {
   return (
@@ -28,11 +29,15 @@ export function SignupForm() {
         <Input id="password" type="password" placeholder="••••••••" />
       </Field>
       <Field orientation="horizontal">
-        <Button type="reset" variant="outline">
-          Reset
-        </Button>
+       
         <Button type="submit">Submit</Button>
       </Field>
+      <p className="text-sm text-gray-600">
+        Already have an account?{" "}
+        <Link to="/login" className="text-primary font-medium hover:underline">
+          Sign in
+        </Link>
+      </p>
     </FieldGroup>
   )
 }
